@@ -1,0 +1,11 @@
+Website
+ashrafpatel.000webhostapp.com 
+Project mainly done in Python so some scripts wont load correctly
+
+Admin:
+Username:	admin123
+Password:	admin
+
+Student:
+Username:	4shr4f@live.co.uk
+Password:	admin
