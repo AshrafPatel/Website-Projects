@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<HealthCare.Models.Rotation>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Profile Rotations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateRota")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("RotationName")
+        </th>
+        <th>
+            @Html.DisplayName("Start Date")
+        </th>
+        <th>
+            @Html.DisplayName("EndDate")
+        </th>
+        <th>
+            @Html.DisplayName("Supervisor")
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Student.Email == HttpContext.Current.User.Identity.Name.ToString())
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RotationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supervisor)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditRota", "Student", new { id = item.RKey }) |
+                    @Html.ActionLink("Details", "DetailsRota", "Student", new { id = item.RKey }) |
+                    @Html.ActionLink("Delete", "DeleteRota", "Student", new { id = item.RKey })
+                </td>
+            </tr>
+        }
+
+    }
+
+</table>

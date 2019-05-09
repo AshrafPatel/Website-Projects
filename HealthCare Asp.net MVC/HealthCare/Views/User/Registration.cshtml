@@ -1,0 +1,272 @@
+﻿<style>
+    #stylaz {
+        font-family: 'Agency FB';
+        padding: inherit;
+        margin-bottom: auto;
+        text-align: center;
+        background-color: navajowhite;
+        font-size: inherit;
+        color: black;
+    }
+</style>
+
+@model HealthCare.Models.Student
+
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration</h2>
+
+@{
+    if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success" id="stylaz">
+                <strong>Successfully Registered</strong>@ViewBag.Message
+            </div>
+        }
+    }
+
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal" id="stylaz">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("DOBInvalid", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProgramName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ProgramName", new List<SelectListItem>
+                        {
+                            new SelectListItem{Text="Allergy", Value = "Allergy"},
+                            new SelectListItem{Text="Anaesthesiology", Value = "Anaesthesiology"},
+                            new SelectListItem{Text="Biochemistry", Value = "Biochemistry"},
+                            new SelectListItem{Text="Diagnostic radiology", Value = "Diagnostic radiology"},
+                            new SelectListItem{Text="Emergency Medicine(FM)", Value = "Emergency Medicine(FM)"},
+                            new SelectListItem{Text="Emergency Medicine(FRCP)", Value = "Emergency Medicine(FRCP)"},
+                            new SelectListItem{Text="Endocrinology", Value = "Endocrinology"},
+                            new SelectListItem{Text="Family Medicine", Value = "Family Medicine"},
+                            new SelectListItem{Text="Gynecology", Value = "Gynecology"},
+                            new SelectListItem{Text="Core rotation", Value = "Core rotation"},
+                            new SelectListItem{Text="Elective", Value = "Elective"},
+                            new SelectListItem{Text="RPN", Value = "RPN"},
+                            new SelectListItem{Text="RN", Value = "RN"},
+                            new SelectListItem{Text="MN", Value = "MN"},
+                            new SelectListItem{Text="NP", Value = "NP"},
+                            new SelectListItem{Text="Anaesthesia Assistant", Value = "Anaesthesia Assistant"},
+                            new SelectListItem{Text="Audiology", Value = "Audiology"},
+                            new SelectListItem{Text="Cardiovascular Technology(ECG)", Value = "Cardiovascular Technology(ECG)"},
+                            new SelectListItem{Text="Chiropody", Value = "Chiropody"},
+                            new SelectListItem{Text="Dietetics", Value = "Dietetics"},
+                            new SelectListItem{Text="Diet Technician", Value = "Diet Technician"},
+                            new SelectListItem{Text="Echocardiography", Value = "Echocardiography"},
+                            new SelectListItem{Text="Infection Prevention And Control", Value = "Infection Prevention And Control"},
+                            new SelectListItem{Text="Other", Value = "Other"}
+                        }, "Program Name", new { @id = "ProgramName", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ProgramName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.ProgramName, "ProgramName", new { @id = "OtherText", @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProgramType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ProgramType", new List<SelectListItem>
+                        {new SelectListItem{Text = "PostGraduate", Value = "PostGraduate"},
+                        new SelectListItem{Text = "UnderGraduate", Value = "UnderGraduate"},
+                        new SelectListItem{Text = "Nursing", Value = "Nursing"},
+                        new SelectListItem{Text = "Health Professions", Value = "Health Professions"}
+                    }, "Program Type", new { @id = "ProgramType", @class = "form-control", @readonly = true })
+                        @Html.ValidationMessageFor(model => model.ProgramType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InstitutionalName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("InstitutionalName", new List<SelectListItem>
+                        {
+                            new SelectListItem{Text="University of Toronto", Value = "University of Toronto"},
+                            new SelectListItem{Text="Algonquin", Value = "Algonquin"},
+                            new SelectListItem{Text="Athabasca University", Value = "Athabasca University"},
+                            new SelectListItem{Text="Cambrian College", Value = "Cambrian College"},
+                            new SelectListItem{Text="Centennial College", Value = "Centennial College"},
+                            new SelectListItem{Text="College Boreal", Value = "College Boreal"},
+                            new SelectListItem{Text="Conestoga", Value = "Conestoga"},
+                            new SelectListItem{Text="D'Youville College", Value = "D'Youville College"},
+                            new SelectListItem{Text="Fanshawe", Value = "Fanshawe"},
+                            new SelectListItem{Text="George Brown College", Value = "George Brown College"},
+                            new SelectListItem{Text="Georgian College", Value = "Georgian College"},
+                            new SelectListItem{Text="Guelph University", Value = "Guelph University"},
+                            new SelectListItem{Text="Humber College", Value = "Humber College"},
+                            new SelectListItem{Text="Lambton College", Value = "Lambton College"},
+                            new SelectListItem{Text="Laurentian University", Value = "Laurentian University"},
+                            new SelectListItem{Text="McGill University", Value = "McGill University"},
+                            new SelectListItem{Text="McMaster University", Value = "McMaster University"},
+                            new SelectListItem{Text="Michener Institute for Applied Health Science", Value = "Michener Institute for Applied Health Science"},
+                            new SelectListItem{Text="Mohawk College of Applied Arts", Value = "Mohawk College of Applied Arts"},
+                            new SelectListItem{Text="Niagara College", Value = "Niagara College"},
+                            new SelectListItem{Text="Northern Ontario School of Medicine", Value = "Northern Ontario School of Medicine"},
+                            new SelectListItem{Text="Queens University", Value = "Queens University"},
+                            new SelectListItem{Text="Ryerson University", Value = "Ryerson University"},
+                            new SelectListItem{Text="Seneca College", Value = "Seneca College"},
+                            new SelectListItem{Text="Trent University", Value = "Trent University"},
+                            new SelectListItem{Text="University of Ontario Institute of Technology (UOIT)", Value = "University of Ontario Institute of Technology (UOIT)"},
+                            new SelectListItem{Text="University of Ottawa", Value = "University of Ottawa"},
+                            new SelectListItem{Text="University of Waterloo", Value = "University of Waterloo"},
+                            new SelectListItem{Text="University of Western Ontario", Value = "University of Western Ontario"},
+                            new SelectListItem{Text="Wilfrid Laurier University", Value = "Wilfrid Laurier University"},
+                            new SelectListItem{Text="York University", Value = "York University"}
+                        }, "Institutional Name", new { @id = "InstitutionalName", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.InstitutionalName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+            if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Error! @ViewBag.Message</strong>
+                </div>
+            }
+        }
+    }
+}
+
+
+
+<div>
+    @Html.ActionLink("Login", "Login")
+</div>
+
+
+@Scripts.Render("~/bundles/jqueryval")
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#OtherText").hide();
+
+            $("#ProgramName").change(function () {
+                var value = document.getElementById("ProgramName").value;
+                $("#OtherText").hide();
+                if (value == "Other") {
+                    $("#OtherText").show();
+                    document.getElementById("ProgramType").value = "Health Professions";
+                }
+                else if (value == "Allergy" || value == "Anaesthesiology" || value == "Biochemistry" || value == "Diagnostic radiology" || value == "Emergency Medicine(FM)" || value == "Emergency Medicine(FRCP)" || value == "Endocrinology" || value == "Family Medicine" || value == "Gynecology") {
+                    $("#OtherText").hide();
+                    $("#OtherText").value = "";
+                    document.getElementById("ProgramType").value = "PostGraduate";
+                }
+                else if (value == "Core rotation" || value == "Elective" || value == "Selective") {
+                    $("#OtherText").hide();
+                    $("#OtherText").value = "";
+                    document.getElementById("ProgramType").value = "UnderGraduate";
+                }
+                else if (value == "RPN" || value == "RN" || value == "MN" || value == "NP") {
+                    $("#OtherText").hide();
+                    $("#OtherText").value = "";
+                    document.getElementById("ProgramType").value = "Nursing";
+                }
+                else if (value == "Anaesthesia Assistant" || value == "Audiology" || value == "Cardiovascular Technology(ECG)" || value == "Chiropody" || value == "Dietetics" || value == "Diet Technician" || value == "Echocardiography" || value == "Infection Prevention And Control") {
+                    $("#OtherText").hide();
+                    $("#OtherText").value = "";
+                    document.getElementById("ProgramType").value = "Health Professions";
+                }
+            });
+
+            $("#ProgramType").click(function () {
+                alert("Cannot change value");
+            });
+        });
+    </script>
+}

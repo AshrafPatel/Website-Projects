@@ -1,0 +1,139 @@
+﻿@model HealthCare.Models.Rotation
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    #stylaz {
+        font-family: 'Agency FB';
+        padding: inherit;
+        margin-bottom: auto;
+        text-align: center;
+        background-color: navajowhite;
+        font-size: inherit;
+        color: black;
+    }
+</style>
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal" id="stylaz">
+    <h4>Rotation</h4>
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RotationName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("RotationName", new List<SelectListItem>
+                {
+                new SelectListItem{Text="Anaesthesia", Value = "Anaesthesia"},
+                new SelectListItem{Text="Cardiology", Value = "Cardiology"},
+                new SelectListItem{Text="Emergency", Value = "Emergency"},
+                new SelectListItem{Text="Family Medicine", Value = "Family Medicine"},
+                new SelectListItem{Text="Gastroenterology", Value = "Gastroenterology"},
+                new SelectListItem{Text="General Surgery", Value = "General Surgery"},
+                new SelectListItem{Text="Genetics", Value = "Genetics"},
+                new SelectListItem{Text="Geriatrics", Value = "Geriatrics"},
+                new SelectListItem{Text="Haematology/Oncology", Value = "Haematology/Oncology"},
+                new SelectListItem{Text="Laboratory Medicine", Value = "Laboratory Medicine"},
+                new SelectListItem{Text="Medical Imaging", Value = "Medical Imaging"},
+                new SelectListItem{Text="Medicine", Value = "Medicine"},
+                new SelectListItem{Text="Neurology", Value = "Neurology"},
+                new SelectListItem{Text="Obstetrics/Gynecology", Value = "Obstetrics/Gynecology"},
+                new SelectListItem{Text="Ophthalmology", Value = "Ophthalmology"},
+                new SelectListItem{Text="Orthopedics", Value = "Orthopedics"},
+                new SelectListItem{Text="Otolaryngology", Value = "Otolaryngology"},
+                new SelectListItem{Text="Paediatrics", Value = "Paediatrics"},
+                new SelectListItem{Text="Palliative Medicine", Value = "Palliative Medicine"},
+                new SelectListItem{Text="Psychiatry", Value = "Psychiatry"},
+                new SelectListItem{Text="Rheumatology", Value = "Rheumatology"}
+            }, "Rotation Name", new { @id = "RotationName", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.RotationName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Supervisor, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Supervisor", new List<SelectListItem>
+                {
+                new SelectListItem{Text="Andrew Chan", Value = "Andrew Chan"},
+                new SelectListItem{Text="Smith Will", Value = "Smith Will"},
+                new SelectListItem{Text="Sheldon Cooper", Value = "Sheldon Cooper"},
+                new SelectListItem{Text="Melissa Wilson", Value = "Melissa Wilson"},
+                new SelectListItem{Text="Pawan Singh", Value = "Pawan Singh"},
+                new SelectListItem{Text="Jane Doe", Value = "Jane Doe"}
+            }, "Supervisor Name", new { @id = "Supervisor", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Supervisor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@Scripts.Render("~/bundles/jqueryval")
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#RotationName").change(function () {
+                var value = document.getElementById("RotationName").value;
+                if (value == "Anaesthesia" || value == "General Surgery" || value == "Genetics" || value == "Geriatrics" || value == "Medicine") {
+                    document.getElementById("Supervisor").value = "Andrew Chan";
+                }
+                else if (value == "Cardiology" || value == "Gastroenterology" || value == "Neurology" || value == "Palliative Medicine" || value == "Rheumatology") {
+                    document.getElementById("Supervisor").value = "Smith Will";
+                }
+                else if (value == "Emergency" || value == "Family Medicine") {
+                    document.getElementById("Supervisor").value = "Sheldon Cooper";
+                }
+                else if (value == "Haematology/Oncology" || value == "Laboratory Medicine" || value == "Medical Imaging" || value == "Psychiatry") {
+                    document.getElementById("Supervisor").value = "Melissa Wilson";
+                }
+                else if (value == "Obstetrics/Gynecology" || value == "Ophthalmology" || value == "Orthopedics") {
+                    document.getElementById("Supervisor").value = "Pawan Singh";
+                }
+                else if (value == "Otolaryngology" || value == "Paediatrics") {
+                    document.getElementById("Supervisor").value = "Jane Doe";
+                }
+            });
+
+            $("#Supervisor").click(function () {
+                alert("Cannot change value");
+            });
+        });
+    </script>
+}

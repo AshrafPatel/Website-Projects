@@ -1,0 +1,163 @@
+﻿@model IEnumerable<HealthCare.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<input type="text" onkeydown="mySearchFunction()" id="myInput" placeholder="Search...">
+
+<table class="table" id="stylaz">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstitutionalName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="CellWithComment">
+                <div class="CellComment">
+                    <p>Name: @item.FirstName @item.LastName</p>
+                    <p>Email: @item.Email</p>
+                    <p>Telephone: @item.Telephone</p>
+                </div>
+                @Html.DisplayFor(modelItem => item.FirstName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstitutionalName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PKey }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PKey }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PKey })
+            </td>
+        </tr>
+    }
+</table>
+<style>
+    .CellWithComment {
+        position: relative;
+    }
+
+    .CellComment {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        border: 1px;
+        background-color: white;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #000000;
+        padding: 3px;
+        color: #000000;
+        top: 20px;
+        left: 20px;
+    }
+
+    .CellWithComment:hover div.CellComment {
+        display: block;
+        width: 250px;
+        text-align: center;
+    }
+
+    #stylaz {
+        font-family: 'Agency FB';
+        padding: inherit;
+        margin-bottom: auto;
+        text-align: center;
+        background-color: navajowhite;
+        font-size: inherit;
+        color: black;
+    }
+</style>
+@section Scripts {
+<script>
+            function mySearchFunction(){
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table=document.getElementById("stylaz");
+                tr=table.getElementsByTagName("tr");
+
+                for(i=0; i<tr.length; i++){
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if(td){
+                        txtValue = td.textContent || td.innerText;
+                        if(txtValue.toUpperCase().indexOf(filter) > -1){
+                            tr[i].style.display = "";
+                        }
+                        else{
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+</script>
+}

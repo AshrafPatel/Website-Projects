@@ -1,0 +1,137 @@
+﻿@model IEnumerable<HealthCare.Models.Rotation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<input type="text" onkeydown="mySearchFunction()" id="myInput" placeholder="Search...">
+
+<table class="table" id="stylaz">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RotationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supervisor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RKey)
+        </th>
+        <th>
+            @Html.DisplayName("Options")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="CellWithComment">
+                <div class="CellComment">
+                    <p>Name: @item.Student.FirstName @item.Student.LastName</p>
+                    <p>Email: @item.Student.Email</p>
+                    <p>Telephone: @item.Student.Telephone</p>
+                </div>
+                @Html.DisplayFor(modelItem => item.Student.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RotationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supervisor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RKey)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PKey }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PKey }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PKey })
+            </td>
+        </tr>
+    }
+
+</table>
+<style>
+    .CellWithComment {
+        position: relative;
+    }
+
+    .CellComment {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        border: 1px;
+        background-color: white;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #000000;
+        padding: 3px;
+        color: #000000;
+        top: 20px;
+        left: 20px;
+    }
+
+    .CellWithComment:hover div.CellComment {
+        display: block;
+        width: 250px;
+        text-align: center;
+    }
+
+    #stylaz {
+        font-family: 'Agency FB';
+        padding: inherit;
+        margin-bottom: auto;
+        text-align: center;
+        background-color: navajowhite;
+        font-size: inherit;
+        color: black;
+    }
+</style>
+@section Scripts {
+    <script>
+        function mySearchFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("stylaz");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    }
+                    else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+}
+

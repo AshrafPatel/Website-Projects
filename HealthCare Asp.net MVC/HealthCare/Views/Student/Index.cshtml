@@ -1,0 +1,26 @@
+﻿@model HealthCare.Models.UserLogin
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    #stylaz {
+        font-family: 'Agency FB';
+        padding: inherit;
+        margin-bottom: auto;
+        text-align: center;
+        background-color: navajowhite;
+        font-size: inherit;
+        color: black;
+    }
+</style>
+
+<h2>Profile</h2>
+
+@{
+    string identity = HttpContext.Current.User.Identity.Name;
+}
+
+<p><a class="btn btn-default" href="~/Student/Edit">Edit Profile &raquo;</a></p>
+<p><a class="btn btn-default" href="~/Student/rotaIndex">Check Rotations &raquo;</a></p>
+
