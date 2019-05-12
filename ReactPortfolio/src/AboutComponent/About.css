@@ -1,0 +1,48 @@
+.AboutMe {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #3096E6;
+    text-align: center;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+}
+
+.AboutMe > .profilePic {
+    flex: 1;
+    text-align: left;
+    height: 270px;
+    padding-right: 10px;
+}
+
+.AboutMe > .AboutContainer {
+    flex: 3;
+    background-color: #30965B;
+    text-align: center;
+    margin: 0;
+    padding: 15px;
+}
+
+.AboutContainer {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid #4C3C1B;
+    padding: 8px 80px 8px 8px;
+    width: 300px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+@media (max-width: 1000px) {
+    .profilePic {
+        display: none;
+        height: 0px;
+        width: 0px;
+    }
+    .AboutContainer {
+        width: 100%;
+    }
+}

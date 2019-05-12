@@ -1,0 +1,27 @@
+.PortfolioBackground {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr; 
+    grid-gap: 20px;
+    margin-top: 0px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 100vh;
+    justify-content: center;
+    max-width: 100%;
+    background-color: #3096E6;
+}
+
+
+@media (max-width: 1280px) { 
+  .PortfolioBackground {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 0px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 100%;
+  }
+}

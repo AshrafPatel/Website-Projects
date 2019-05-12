@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.662156fd.chunk.css",
+    "main.js": "/static/js/main.031629ae.chunk.js",
+    "main.js.map": "/static/js/main.031629ae.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.bd46f8b7.chunk.js": "/static/js/2.bd46f8b7.chunk.js",
+    "static/js/2.bd46f8b7.chunk.js.map": "/static/js/2.bd46f8b7.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.1e9967e3b6c7aced14ca599c6e26275b.js": "/precache-manifest.1e9967e3b6c7aced14ca599c6e26275b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.662156fd.chunk.css.map": "/static/css/main.662156fd.chunk.css.map",
+    "static/media/edited profile pic.jpg": "/static/media/edited profile pic.2f32a350.jpg",
+    "static/media/game.jpg": "/static/media/game.da7ad42b.jpg",
+    "static/media/mobile.jpg": "/static/media/mobile.6761de65.jpg",
+    "static/media/pacman.png": "/static/media/pacman.8a8b2760.png",
+    "static/media/web.jpg": "/static/media/web.9d254f1f.jpg"
+  }
+}

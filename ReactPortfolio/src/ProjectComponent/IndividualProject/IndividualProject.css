@@ -1,0 +1,29 @@
+h2 {
+    color: black;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 1.775em;
+}
+
+.project {
+    text-decoration: none;
+    background-color: #78a2cb;
+    text-align: center;
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.portfolioPics {
+    height: 400px;
+    width: 80%;
+}
+
+.project p {
+    color: black;
+    font-size: 1.175em;
+    border: 1px solid #4C3C1B;
+    margin: auto;
+    width: 80%;
+    padding: 5px;
+    background-color: #EFEECB;
+    margin-bottom: 30px;
+    font-family: "Arial Black", Gadget, sans-serif;
+}

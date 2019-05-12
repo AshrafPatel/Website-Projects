@@ -1,0 +1,50 @@
+.Intro {
+    background-color: rgb(214, 214, 214);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.Intro > .AP {
+    max-width: 100%;
+    margin-top: 200px;
+    margin-bottom: auto;
+    align-self: center;
+}
+
+.Intro > .weblinkcontainer {
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: row;
+    background: rgb(214, 214, 214);
+    text-align: center;
+    text-decoration: none;
+    font-family: Playfair Display;
+    font-size: 75px;
+    color: black;
+    max-width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.weblinkcontainer > a button {
+    flex: 1;
+    width: 225px;
+    background-color: black;
+    color: white;
+    height: 100px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px 5px #000000;
+    margin-bottom: 35px;
+}
+
+.weblinkcontainer > a button:hover {
+    background-color: white;
+    color: black;
+}
